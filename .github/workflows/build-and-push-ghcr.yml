@@ -38,8 +38,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest
-            type=sha
+            # 只有在 main 分支构建时，才打上 :latest 标签
+            type=raw,value=latest,enable={{is_default_branch}}
+            # 如果是打 Tag 发布（如 v1.0.0），则自动打上 :v1.0.0 标签
             type=ref,event=tag
 
       - name: Build and push
