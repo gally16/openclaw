@@ -2,7 +2,7 @@
 name: Sync Upstream Fork
 
 # 触发工作流的事件
-于:
+on:
   # 允许你手动在 Actions 页面触发此工作流
   workflow_dispatch:
   
